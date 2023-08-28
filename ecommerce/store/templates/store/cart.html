@@ -1,7 +1,9 @@
-{% load static %}
+{% extends 'store/main.html' %}
+
 
 
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +12,12 @@
     <title>Document</title>
 </head>
 <body>
+    {% block content %}
+    <h1>cart</h1>
+    
+    
+    {% endblock content %}
+    
     
 </body>
 </html>
