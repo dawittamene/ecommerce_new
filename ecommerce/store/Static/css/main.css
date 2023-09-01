@@ -1,3 +1,7 @@
+:root{
+    --orange:#ffa500;
+}
+
 body{
 	background-color: hsl(0, 0%, 98%);
 }
@@ -12,7 +16,9 @@ h1,h2,h3,h4,h5,h6{
 	border-radius: 4px;
 	padding: 10px;
 }
-
+.logo{
+	color: var(--orange);
+}
 .thumbnail{
 	width: 100%;
 	height: 200px;
@@ -56,7 +62,10 @@ h1,h2,h3,h4,h5,h6{
 
 .row-image{
 	width: 100px;
+	
+	
 }
+
 
 .form-field{
 	width:250px;
