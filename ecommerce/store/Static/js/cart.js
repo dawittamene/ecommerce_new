@@ -12,8 +12,29 @@ for(i=0; i < updatBtns.length; i++){
             console.log('user is not login')
 
         }else{
-            console.log('user is authenticated, sending data....')
+            updateUserOrder(productID, action)
         }
     })
 
+}
+
+function updateUserOrder(productID, action){
+    console.log('user is logged in, sending data....')
+    var url = '/update_item/'
+
+    fatch(url,{
+        method:'POST',
+        headers:{
+            'content-Type':'application/json',
+            'X-CSRFTOKEN':csrftoken,
+        },
+        body:JSON.stringify({'productID': productID, 'action':action})
+    })
+    .then((response) =>{
+        return response.json
+    })
+
+    .then((data) =>{
+        console.log('data:', data)
+    })
 }
