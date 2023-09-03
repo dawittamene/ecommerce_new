@@ -51,6 +51,7 @@ def updateItem(request):
     orderItem,create = OrderItem.objects.get_or_create(order=order, complete=False)
     
     if action == 'add':
+        
         orderItem.quantity = (orderItem.quantity + 1)
         
     elif action == 'remove':
