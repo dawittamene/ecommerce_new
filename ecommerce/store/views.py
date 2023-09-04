@@ -1,7 +1,8 @@
 from django.shortcuts import render
-#from django.http import JsonResponse
-#import json
+from django.http import JsonResponse
+import json
 from .models import *
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -36,3 +37,14 @@ def checkout(request):
         
     context = {'items':items, 'order': order}
     return render(request, 'store/checkout.html', context)
+
+
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print('productId: ', productId)
+    print('action: ', action)
+    return JsonResponse('Item was added', safe=False)
