@@ -48,3 +48,4 @@ def updateItem(request):
     print('productId: ', productId)
     print('action: ', action)
     return JsonResponse('Item was added', safe=False)
+
