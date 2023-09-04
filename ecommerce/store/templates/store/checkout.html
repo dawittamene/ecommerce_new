@@ -19,10 +19,10 @@
 				<form id="form">
 					<div id="user-info">
 						<div class="form-field">
-							<input required class="form-control" type="text" name="name" placeholder="Name..">
+							<input required class="form-control" type="text" name="name" placeholder="Name...">
 						</div>
 						<div class="form-field">
-							<input required class="form-control" type="email" name="email" placeholder="Email..">
+							<input required class="form-control" type="email" name="email" placeholder="Email...">
 						</div>
 					</div>
 					
@@ -31,19 +31,19 @@
 						<p>Shipping Information:</p>
 						<hr>
 						<div class="form-field">
-							<input class="form-control" type="text" name="address" placeholder="Address..">
+							<input class="form-control" type="text" name="address" placeholder="Address...">
 						</div>
 						<div class="form-field">
-							<input class="form-control" type="text" name="city" placeholder="City..">
+							<input class="form-control" type="text" name="city" placeholder="City...">
 						</div>
 						<div class="form-field">
-							<input class="form-control" type="text" name="state" placeholder="State..">
+							<input class="form-control" type="text" name="state" placeholder="kebele...">
 						</div>
 						<div class="form-field">
-							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+							<input class="form-control" type="text" name="Phone" placeholder="Phone Number...">
 						</div>
 						<div class="form-field">
-							<input class="form-control" type="text" name="country" placeholder="Zip code..">
+							<input class="form-control" type="text" name="home" placeholder="Home number...">
 						</div>
 					</div>
 
@@ -55,6 +55,7 @@
 			<br>
 			<div class="box-element hidden" id="payment-info">
 				<small>telebirr Options</small>
+				<button id="make-payment">Make Payment</button>
 			</div>
 			
 		</div>
@@ -81,6 +82,70 @@
 		</div>
 		
 	</div>
+
+	<script type="text/javascript">
+		var shipping = '{{order.shipping}}'
+		var total = '{{order.get_cart_total|floatformat:2}}'
+		if(shipping == 'False'){
+			document.getElementById('shipping-info').innerHTML = ''
+
+		}
+
+		if (user != 'AnonymousUser'){
+			document.getElementById('user-info').innerHTML = ''
+		}
+
+		if (shipping == 'False' && user != 'AnonymousUser'){
+			document.getElementById('form-wrapper').classList.add("hidden");
+			document.getElementById('payment-info').classList.remove("hidden");
+		}
+
+		var form = document.getElementById('form')
+		form.addEventListener('submit', function(e){
+			e.preventDefault()
+			console.log('form is submited...')
+			document.getElementById('form-button').classList.add('hidden')
+			document.getElementById('payment-info').classList.remove('hidden')
+		})
+
+		document.getElementById('make-payment').addEventListener('click', function(e){
+			submitFormData()
+		})
+
+		function submitFormData(){
+			console.log('payment button clicked')
+
+
+			var userFormData = {
+				'name':null,
+				'email':null,
+				'total':total
+			}
+
+			var shippingInfo = {
+				'address':null,
+				'city':null,
+				'Phone':null,
+				'home':null,
+				
+			}
+
+			if (shipping != 'False'){
+				shippingInfo.address = form.address.value
+				shippingInfo.city = form.city.value
+				shippingInfo.Phone = form.Phone.value
+				shippingInfo.home = form.home.value
+			}
+
+			if (user == 'AnonymousUser'){
+				userFormData.name = form.name.value
+				userFormData.email = form.email.value
+				
+			}
+		}
+
+	
+	</script>
     
     
     {% endblock content %}
