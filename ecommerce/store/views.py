@@ -70,6 +70,7 @@ def updateItem(request):
 
 
 def processOrder(request):
+    print('Data:', request.body)
     return JsonResponse('paymeat is completed', safe=False)
     
 
