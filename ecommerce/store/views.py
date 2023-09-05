@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
+import datetime
 from .models import *
 
 
@@ -70,7 +71,15 @@ def updateItem(request):
 
 
 def processOrder(request):
-    print('Data:', request.body)
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order,create = Order.objects.get_or_create(customer=customer, complete=False)
+    else:
+        {
+            print('user is not logged in....')
+        }    
     return JsonResponse('paymeat is completed', safe=False)
     
 
