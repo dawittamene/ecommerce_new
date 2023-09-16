@@ -12,7 +12,6 @@ def store(request):
         order,create = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
-        
     else:
         items = []
         order = {'get_cart_items': 0, 'get_cart_total': 0, 'shipping':False}
@@ -27,8 +26,6 @@ def cart(request):
         order,create = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
-        
-        
     else:
         items = []
         order = {'get_cart_items': 0, 'get_cart_total': 0, 'shipping':False}
@@ -69,9 +66,7 @@ def updateItem(request):
         orderItem.delete()
     return JsonResponse('Item was added', safe=False)
 
-
 from django.views.decorators.csrf import csrf_exempt
-
 @csrf_exempt
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
