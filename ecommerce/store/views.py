@@ -3,6 +3,10 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 def store(request):
@@ -119,7 +123,7 @@ def signup(request):
             my_user.save()
             messages.success(request, "account was created successfully!")
             return redirect('loginpage')
-    return render(request, 'song/signup.html')
+    return render(request, 'store/signup.html')
 def loginpage(request):
     
     if request.method=='POST':
@@ -128,10 +132,10 @@ def loginpage(request):
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
             login(request,user)
-            return redirect('index')
+            return redirect('store')
         else:
            messages.info(request, "username or password is incorrect")
-    return render(request, 'song/login.html')
+    return render(request, 'store/login.html')
 def logoutPage(request):
     logout(request)
     return redirect('loginpage')
