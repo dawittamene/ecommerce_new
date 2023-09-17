@@ -3,9 +3,6 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
-
-
-
 def store(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -30,7 +27,6 @@ def cart(request):
         items = []
         order = {'get_cart_items': 0, 'get_cart_total': 0, 'shipping':False}
         cartItems =order['get_cart_items']
-        
     context = {'items':items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/cart.html', context)
 
