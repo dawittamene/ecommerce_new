@@ -8,10 +8,6 @@ urlpatterns = [
     
     path('update_item/', views.updateItem, name="update_item"),
     path('process_order/', views.processOrder, name="process_order"),
-    
-    path('signup/', views.signup, name="signup"),
-    path('loginpage/', views.loginpage, name="loginpage"),
-    path('logoutPage/', views.logoutPage, name="logoutPage"),
 
     
     

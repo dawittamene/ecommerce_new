@@ -1,13 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.http import JsonResponse
 import json
 import datetime
-
-
-from django.contrib import messages
-
-from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
 from .models import *
 def store(request):
     if request.user.is_authenticated:
@@ -104,36 +98,7 @@ def processOrder(request):
 
 
 
-def signup(request):
-    if request.method == 'POST':
-        uname=request.POST.get('username')
-        email=request.POST.get('email')
-        pass1=request.POST.get('password1')
-        pass2=request.POST.get('password2')
-        
-        if pass1!=pass2:
-            return HttpResponse("Your password and confrom password are not Same!!")
-        else:
-            my_user=User.objects.create_user(uname,email,pass1)
-            my_user.save()
-            messages.success(request, "account was created successfully!")
-            return redirect('loginpage')
-    return render(request, 'store/signup.html')
-def loginpage(request):
-    
-    if request.method=='POST':
-        username=request.POST.get('username')
-        pass1=request.POST.get('pass')
-        user=authenticate(request,username=username,password=pass1)
-        if user is not None:
-            login(request,user)
-            return redirect('store')
-        else:
-           messages.info(request, "username or password is incorrect")
-    return render(request, 'store/login.html')
-def logoutPage(request):
-    logout(request)
-    return redirect('loginpage')
+
     
 
 
