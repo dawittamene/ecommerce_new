@@ -11,6 +11,7 @@ urlpatterns = [
     path('process_order/', views.processOrder, name="process_order"),
     path('loginpage/', views.loginpage, name="loginpage"),
     path('signuppage/', views.signuppage, name="signuppage"),
+    path('logoutPage/', views.logoutPage, name="logoutPage"),
 
     
     

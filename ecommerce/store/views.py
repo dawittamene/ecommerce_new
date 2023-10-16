@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
 import datetime
 from .models import *
+
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 def index(request):
     return render(request, 'store/index.html')
@@ -98,13 +101,42 @@ def processOrder(request):
 
 
 def loginpage(request):
+    
+    if request.method=='POST':
+        username=request.POST.get('username')
+        pass1=request.POST.get('pass')
+        user=authenticate(request,username=username,password=pass1)
+        if user is not None:
+            login(request,user)
+            return redirect('index')
+        else:
+           messages.info(request, "username or password is incorrect")
     context ={}
     return render(request, 'store/login.html', context)
 
 
 def signuppage(request):
+    
+    if request.method == 'POST':
+        uname=request.POST.get('username')
+        email=request.POST.get('email')
+        pass1=request.POST.get('password1')
+        pass2=request.POST.get('password2')
+        
+        if pass1!=pass2:
+            return HttpResponse("Your password and confrom password are not Same!!")
+        else:
+            my_user=User.objects.create_user(uname,email,pass1)
+            my_user.save()
+            messages.success(request, "account was created successfully!")
+            return redirect('loginpage')
     context ={}
     return render(request, 'store/signup.html', context)
+
+
+def logoutPage(request):
+    logout(request)
+    return redirect('loginpage')
 
 
 
