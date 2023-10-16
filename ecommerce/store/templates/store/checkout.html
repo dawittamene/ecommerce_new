@@ -44,6 +44,9 @@
 						<div class="form-field">
 							<input class="form-control" type="text" name="home" placeholder="Home number..." required>
 						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="size" placeholder="enter your colour and size" required>
+						</div>
 					</div>
 
 					<hr>
@@ -126,6 +129,7 @@
 				'city':null,
 				'Phone':null,
 				'home':null,
+				'size':null,
 				
 			}
 
@@ -134,6 +138,7 @@
 				shippingInfo.city = form.city.value
 				shippingInfo.Phone = form.Phone.value
 				shippingInfo.home = form.home.value
+				shippingInfo.home = form.size.value
 			}
 
 			if (user == 'AnonymousUser'){

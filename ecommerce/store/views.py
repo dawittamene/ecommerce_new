@@ -87,6 +87,7 @@ def processOrder(request):
                 state=data['shipping']['state'],
                 Phone=data['shipping']['Phone'],
                 home=data['shipping']['home'],
+                size=data['shipping']['size'],
             )    
     else:
         {
