@@ -3,6 +3,9 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
+
+def index(request):
+    return render(request, 'store/index.html')
 def store(request):
     if request.user.is_authenticated:
         customer = request.user.customer
