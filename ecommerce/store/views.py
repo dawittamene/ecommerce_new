@@ -97,7 +97,14 @@ def processOrder(request):
 
 
 
+def loginpage(request):
+    context ={}
+    return render(request, 'store/login.html', context)
 
+
+def signuppage(request):
+    context ={}
+    return render(request, 'store/signup.html', context)
 
 
 
