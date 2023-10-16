@@ -10,7 +10,7 @@ body,html{
     height: 100%;
     overflow: hidden;
     position: relative;
-    background-image: url(image.jpg);
+  
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,7 +35,7 @@ body,html{
     color: #111;
 }
 .content a{
-    background: #85c1ee;
+    background: gray;
     padding: 10px 24px;
     text-decoration: none;
     font-size: 18px;
@@ -45,29 +45,10 @@ body,html{
     background: #034e88;
     color: #fff;
 }
-@keyframes change{
-    0%
-    {
-        background-image: url(img1.jpg);
-    }
-    20%
-    {
-        background-image: url(img2.jpg);
-    }
-    40%
-    {
-        background-image: url(image.jpg);
-    }
-    60%
-    {
-        background-image: url(img4.jpg);
-    }
-    80%
-    {
-        background-image: url(img5.jpg);
-    }
-    100%
-    {
-        background-image: url(img1.jpg);
-    }
+.back{
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
 }
