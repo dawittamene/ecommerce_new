@@ -114,7 +114,6 @@ def loginpage(request):
     context ={}
     return render(request, 'store/login.html', context)
 
-
 def signuppage(request):
     
     if request.method == 'POST':
