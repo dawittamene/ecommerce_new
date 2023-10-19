@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{%static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>website images slider</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <section class="main swiper mySwiper">
         <div class="wrapper swiper-wrapper">
           <div class="slide swiper-slide">
-            <img src="images/back.jpg" alt="" class="image" />
+            <img src="{% static 'images/back.jpg' %}" alt="" class="image" />
             <div class="image-data">
               <span class="text">Enjoy the finest coffee drinks.</span>
               <h2>
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="slide swiper-slide">
-            <img src="images/back.jpg" alt="" class="image" />
+            <img src="{% static 'images/back.jpg' %}" alt="" class="image" />
             <div class="image-data">
               <span class="text">We really like what we do.</span>
               <h2>
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="slide swiper-slide">
-            <img src="images/cart.png" alt="" class="image" />
+            <img src="{% static 'images/cart.png' %}" alt="" class="image" />
             <div class="image-data">
               <span class="text">Making Our coffee with lover.</span>
               <h2>
@@ -53,7 +53,8 @@
       <div class="swiper-pagination"></div>
     </section>
 
-    <script src="js/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/swiper-bundle.min.js'%}"></script>
+    
 
     <script>
         var swiper = new Swiper(".mySwiper", {
